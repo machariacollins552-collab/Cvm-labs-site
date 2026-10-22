@@ -1,0 +1,434 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="CVM Labs builds practical AI tools, apps and digital experiences.">
+  <title>CVM Labs — Ideas into technology</title>
+
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a2b;
+      --line: #26334b;
+      --text: #f3f6fc;
+      --muted: #aab7cc;
+      --blue: #4f8cff;
+      --cyan: #69e0e5;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 85% 0%, #172b50 0, transparent 42%),
+        var(--bg);
+      color: var(--text);
+      font: 16px/1.6 system-ui, Arial, sans-serif;
+    }
+
+    .wrap {
+      width: min(1080px, 92%);
+      margin: auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      border-bottom: 1px solid #ffffff12;
+    }
+
+    .brand {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-weight: 800;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--blue), #7456e8);
+      box-shadow: 0 8px 28px #2862d944;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 16px;
+      font-size: 14px;
+    }
+
+    nav a:hover { color: white; }
+
+    .hero {
+      padding: 78px 0 66px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      border: 1px solid #35527c;
+      border-radius: 999px;
+      padding: 6px 12px;
+      color: #b9d1ff;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      background: var(--cyan);
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-size: clamp(40px, 7vw, 68px);
+      line-height: 1.04;
+      letter-spacing: -2px;
+      margin: 20px 0;
+    }
+
+    h1 span { color: #75a5ff; }
+
+    .lead {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 590px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .primary {
+      background: var(--blue);
+      color: white;
+    }
+
+    .secondary {
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    .preview {
+      border: 1px solid #ffffff18;
+      background: linear-gradient(160deg, #17233b, #101626);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 24px 80px #0004;
+    }
+
+    .preview-top {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .orb {
+      margin: 28px auto 18px;
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle at 35% 30%,
+        #c6fbff,
+        #5594ff 38%,
+        #583dd1 70%,
+        #17213b
+      );
+      box-shadow: 0 0 45px #4f8cff55;
+    }
+
+    .preview h3,
+    .preview p {
+      text-align: center;
+    }
+
+    .preview h3 { margin: 0; }
+
+    .preview p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .mini {
+      display: flex;
+      gap: 9px;
+      margin-top: 20px;
+    }
+
+    .mini span {
+      height: 7px;
+      border-radius: 8px;
+      background: #31425f;
+      flex: 1;
+    }
+
+    .mini span:first-child { background: var(--blue); }
+
+    section { padding: 34px 0 58px; }
+
+    .section-head {
+      max-width: 640px;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      font-size: 30px;
+      margin: 0 0 8px;
+    }
+
+    .section-head p { color: var(--muted); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background: #111827;
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .icon { font-size: 23px; }
+
+    .card h3 { margin: 10px 0 6px; }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .status {
+      display: inline-block;
+      margin-top: 14px;
+      color: #a8c7ff;
+      background: #1a2d4d;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 11px;
+    }
+
+    .callout {
+      border: 1px solid #30486d;
+      background: linear-gradient(120deg, #14233b, #101626);
+      border-radius: 22px;
+      padding: 28px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .callout h2 { margin: 0 0 6px; }
+
+    .callout p { color: var(--muted); }
+
+    footer {
+      border-top: 1px solid #ffffff12;
+      padding: 24px 0 36px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 52px 0 38px;
+        gap: 30px;
+      }
+
+      .preview {
+        max-width: 460px;
+        width: 100%;
+        margin: auto;
+      }
+
+      .grid { grid-template-columns: 1fr; }
+
+      .callout {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      h1 { letter-spacing: -1.5px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="wrap" id="home">
+    <a class="brand" href="#home">
+      <span class="mark">CVM</span>
+      <span>CVM Labs</span>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="#work">Focus</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <div>
+        <div class="eyebrow">
+          <span class="dot"></span>
+          Independent technology brand
+        </div>
+
+        <h1>Ideas into<br><span>technology.</span></h1>
+
+        <p class="lead">
+          CVM Labs is an early-stage, founder-led technology brand
+          exploring practical AI tools, mobile apps and digital
+          experiences for everyday problems.
+        </p>
+
+        <div class="actions">
+          <a class="btn primary" href="#work">Explore our focus</a>
+          <a class="btn secondary" href="#about">Meet the founder</a>
+        </div>
+      </div>
+
+      <div class="preview">
+        <div class="preview-top">
+          <span>CVM LABS / CONCEPT 001</span>
+          <span>● PREVIEW</span>
+        </div>
+
+        <div class="orb"></div>
+
+        <h3>Your ideas, organised.</h3>
+        <p>A future home for lightweight AI tools.</p>
+
+        <div class="mini">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="work">
+      <div class="section-head">
+        <h2>What we're building toward</h2>
+        <p>
+          A focused start, with room to grow into a wider software company.
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="icon">✦</div>
+          <h3>AI tools</h3>
+          <p>
+            Simple assistants that help people draft, plan, organise
+            and solve everyday tasks.
+          </p>
+          <span class="status">First product area</span>
+        </article>
+
+        <article class="card">
+          <div class="icon">▣</div>
+          <h3>Mobile apps</h3>
+          <p>
+            Lightweight Android-first experiences designed with
+            real phone and data limits in mind.
+          </p>
+          <span class="status">Planned</span>
+        </article>
+
+        <article class="card">
+          <div class="icon">⌘</div>
+          <h3>Digital products</h3>
+          <p>
+            Useful websites and software experiments for people
+            and small businesses.
+          </p>
+          <span class="status">Planned</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="about">
+      <div class="callout">
+        <div>
+          <h2>Built from Kenya. Made for the world.</h2>
+          <p>
+            Founder: Collins Vincent Macharia · Kenya and international markets
+          </p>
+        </div>
+
+        <a class="btn secondary" href="#contact">Get in touch</a>
+      </div>
+    </section>
+
+    <section class="wrap" id="contact">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p>
+          Add a business email or public contact link here when you're ready.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Let's build useful technology.</h3>
+        <p>
+          Contact details have intentionally been left blank so no
+          personal information is published without your choice.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>© 2026 CVM Labs · Draft brand concept</span>
+      <span>Proposed name — not yet legally cleared or registered.</span>
+    </div>
+  </footer>
+</body>
+  </html>
+  
