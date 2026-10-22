@@ -1,434 +1,289 @@
-
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b1020">
-  <meta name="description" content="CVM Labs builds practical AI tools, apps and digital experiences.">
-  <title>CVM Labs — Ideas into technology</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F6F5F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1411" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<title>CVM Labs — Ideas into technology</title>
+<meta name="description" content="CVM Labs builds practical AI tools, mobile apps and digital products. Founder-led, built from Kenya.">
+<link rel="canonical" href="https://machariacollins552-collab.github.io/Cvm-labs-site/">
 
-  <style>
-    :root {
-      --bg: #0b1020;
-      --panel: #121a2b;
-      --line: #26334b;
-      --text: #f3f6fc;
-      --muted: #aab7cc;
-      --blue: #4f8cff;
-      --cyan: #69e0e5;
-    }
+<!-- Link preview (WhatsApp, Facebook, LinkedIn, X). Needs og-image.png in the repo root. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CVM Labs">
+<meta property="og:title" content="CVM Labs — Ideas into technology">
+<meta property="og:description" content="Practical AI tools, mobile apps and digital products. Built from Kenya, made for the world.">
+<meta property="og:url" content="https://machariacollins552-collab.github.io/Cvm-labs-site/">
+<meta property="og:image" content="https://machariacollins552-collab.github.io/Cvm-labs-site/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CVM Labs: Ideas into technology">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CVM Labs — Ideas into technology">
+<meta name="twitter:description" content="Practical AI tools, mobile apps and digital products. Built from Kenya.">
+<meta name="twitter:image" content="https://machariacollins552-collab.github.io/Cvm-labs-site/og-image.png">
 
-    * { box-sizing: border-box; }
+<!-- Favicon (inline, no extra file needed) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230B6B4D'/%3E%3Ctext x='32' y='41' font-family='Arial' font-weight='800' font-size='24' text-anchor='middle' fill='white'%3ECVM%3C/text%3E%3C/svg%3E">
 
-    html { scroll-behavior: smooth; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    body {
-      margin: 0;
-      background:
-        radial-gradient(ellipse at 85% 0%, #172b50 0, transparent 42%),
-        var(--bg);
-      color: var(--text);
-      font: 16px/1.6 system-ui, Arial, sans-serif;
-    }
+<style>
+/* ---------- Design tokens ---------- */
+:root{
+  --bg:#F6F5F0; --surface:#FFFFFF; --surface-2:#EDEBE3;
+  --text:#14181B; --muted:#4B545C;
+  --border:#E2E0D8;          /* decorative dividers and card edges */
+  --ui-border:#6F7A74;       /* controls: 3:1 or better */
+  --primary:#0B6B4D; --primary-hover:#095A41; --primary-contrast:#FFFFFF; --primary-tint:#E3F1EB;
+  --focus:#0B6B4D;
+  --cta-bg:#0B6B4D; --cta-text:#FFFFFF; --cta-sub:#DDEFE7;
+  --cta-btn-bg:#FFFFFF; --cta-btn-text:#0B6B4D; --cta-line:#FFFFFF;
+  --glow:rgba(11,107,77,.10);
+  --shadow:0 1px 2px rgba(20,24,27,.05),0 8px 24px rgba(20,24,27,.06);
+  --radius:16px; --radius-sm:12px;
+  --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0E1411; --surface:#151D19; --surface-2:#1B2520;
+    --text:#E8EEEA; --muted:#9FAEA6;
+    --border:#26332D; --ui-border:#6F8A7C;
+    --primary:#4CC795; --primary-hover:#6AD6AB; --primary-contrast:#06120C; --primary-tint:#17302A;
+    --focus:#4CC795;
+    --cta-bg:#12382A; --cta-text:#E8EEEA; --cta-sub:#BFD2C8;
+    --cta-btn-bg:#4CC795; --cta-btn-text:#06120C; --cta-line:#8FB7A3;
+    --glow:rgba(76,199,149,.10);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  }
+}
 
-    .wrap {
-      width: min(1080px, 92%);
-      margin: auto;
-    }
+/* ---------- Base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.65 var(--font);overflow-wrap:anywhere}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(60rem 28rem at 90% -10%,var(--glow),transparent 70%)}
+h1,h2,h3,p{margin:0}
+a{color:inherit}
+svg.i{width:1.25rem;height:1.25rem;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1100px,100% - 40px);margin-inline:auto}
+section{padding:clamp(40px,7vw,88px) 0;scroll-margin-top:8px}
+.skip{position:absolute;left:12px;top:-60px;background:var(--primary);color:var(--primary-contrast);padding:10px 16px;border-radius:10px;font-weight:600;text-decoration:none;z-index:10}
+.skip:focus{top:12px}
 
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 22px 0;
-      border-bottom: 1px solid #ffffff12;
-    }
+/* ---------- Header ---------- */
+header{padding:14px 0;border-bottom:1px solid var(--border)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;min-height:44px;font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none}
+.mark{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:var(--primary);color:var(--primary-contrast);font-size:.75rem;font-weight:700;letter-spacing:.02em}
+nav{display:flex}
+nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;color:var(--muted);font-size:.9375rem;font-weight:500;text-decoration:none;border-radius:10px;transition:color .15s ease,background-color .15s ease}
+nav a:hover{color:var(--text);background:var(--surface-2)}
 
-    .brand {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      font-weight: 800;
-      text-decoration: none;
-      color: inherit;
-    }
+/* ---------- Buttons ---------- */
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:var(--radius-sm);font:600 .9375rem/1 var(--font);text-decoration:none;cursor:pointer;border:1.5px solid transparent;transition:transform .18s ease,background-color .18s ease,color .18s ease,border-color .18s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn-primary{background:var(--primary);color:var(--primary-contrast)}
+.btn-primary:hover{background:var(--primary-hover)}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--ui-border)}
+.btn-ghost:hover{background:var(--surface-2)}
 
-    .mark {
-      display: grid;
-      place-items: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 13px;
-      background: linear-gradient(135deg, var(--blue), #7456e8);
-      box-shadow: 0 8px 28px #2862d944;
-    }
+/* ---------- Hero ---------- */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,64px);align-items:center;padding-top:clamp(36px,7vw,88px)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--primary-tint);color:var(--primary);font-size:.8125rem;font-weight:600;letter-spacing:.02em}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--primary)}
+h1{margin:20px 0 0;font-size:clamp(2.5rem,6vw + .6rem,4.5rem);line-height:1.04;letter-spacing:-.035em;font-weight:700;text-wrap:balance}
+h1 em{font-style:normal;color:var(--primary)}
+.lead{margin-top:20px;max-width:34rem;font-size:1.125rem;color:var(--muted)}
 
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      margin-left: 16px;
-      font-size: 14px;
-    }
+.concept{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
+.concept-top{display:flex;justify-content:space-between;gap:12px;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.prompt{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;padding:14px 14px 14px 16px;border:1.5px solid var(--ui-border);border-radius:14px;background:var(--bg);font-size:.9375rem}
+.send{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--primary);color:var(--primary-contrast);flex:none}
+.send .i{width:1rem;height:1rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chips span{padding:6px 12px;border-radius:999px;background:var(--surface-2);font-size:.8125rem;font-weight:500}
+.caption{margin-top:12px;font-size:.8125rem;color:var(--muted)}
 
-    nav a:hover { color: white; }
+/* ---------- Section heads ---------- */
+.kicker{font-size:.8125rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--primary)}
+.section-head{max-width:40rem;margin-bottom:28px}
+.section-head h2{margin-top:8px;font-size:clamp(1.75rem,3vw + .6rem,2.5rem);line-height:1.15;letter-spacing:-.025em;font-weight:700;text-wrap:balance}
+.section-head p{margin-top:10px;color:var(--muted)}
 
-    .hero {
-      padding: 78px 0 66px;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 36px;
-      align-items: center;
-    }
+/* ---------- Focus bento ---------- */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.card.lead-card{grid-column:span 2;grid-row:span 2;background:var(--primary-tint);border-color:transparent;padding:28px}
+.tile{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--primary-tint);color:var(--primary)}
+.lead-card .tile{background:var(--primary);color:var(--primary-contrast)}
+.card h3{margin-top:18px;font-size:1.25rem;line-height:1.3;letter-spacing:-.015em;font-weight:600}
+.lead-card h3{font-size:1.5rem}
+.card p{margin-top:8px;color:var(--muted);font-size:.9375rem}
+.lead-card p{color:var(--text);font-size:1rem;max-width:32rem}
+.status{align-self:flex-start;margin-top:auto;padding:5px 12px;border-radius:999px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:.8125rem;font-weight:600}
+.lead-card .status{background:var(--surface);color:var(--primary);border-color:transparent}
+.card p{margin-bottom:20px}
+.uses{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;padding:0;list-style:none}
+.uses li{padding:6px 14px;border-radius:999px;background:var(--surface);color:var(--text);font-size:.875rem;font-weight:500}
 
-    .eyebrow {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      border: 1px solid #35527c;
-      border-radius: 999px;
-      padding: 6px 12px;
-      color: #b9d1ff;
-      font-size: 12px;
-      text-transform: uppercase;
-    }
+/* ---------- Founder ---------- */
+.founder{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:clamp(24px,4vw,40px)}
+.avatar{display:grid;place-items:center;width:88px;height:88px;border-radius:50%;background:var(--primary);color:var(--primary-contrast);font-size:1.75rem;font-weight:700;letter-spacing:-.02em}
+.founder h2{font-size:1.5rem;line-height:1.2;letter-spacing:-.02em;font-weight:700}
+.role{margin-top:4px;color:var(--primary);font-size:.875rem;font-weight:600}
+.founder .bio{margin-top:14px;max-width:40rem;color:var(--muted)}
+.founder .bio + .bio{margin-top:8px}
 
-    .dot {
-      width: 7px;
-      height: 7px;
-      background: var(--cyan);
-      border-radius: 50%;
-    }
+/* ---------- Contact ---------- */
+.cta{background:var(--cta-bg);color:var(--cta-text);border-radius:24px;padding:clamp(28px,5vw,56px)}
+.cta .kicker{color:var(--cta-sub)}
+.cta h2{margin-top:8px;font-size:clamp(1.75rem,3vw + .6rem,2.5rem);line-height:1.15;letter-spacing:-.025em;font-weight:700;text-wrap:balance;max-width:30rem}
+.cta p{margin-top:12px;color:var(--cta-sub);max-width:32rem}
+.cta :focus-visible{outline-color:var(--cta-text)}
+.cta .btn-primary{background:var(--cta-btn-bg);color:var(--cta-btn-text)}
+.cta .btn-primary:hover{background:var(--cta-btn-bg);filter:brightness(.94)}
+.cta .btn-ghost{color:var(--cta-text);border-color:var(--cta-line)}
+.cta .btn-ghost:hover{background:rgba(255,255,255,.10)}
 
-    h1 {
-      font-size: clamp(40px, 7vw, 68px);
-      line-height: 1.04;
-      letter-spacing: -2px;
-      margin: 20px 0;
-    }
+/* ---------- Footer ---------- */
+footer{border-top:1px solid var(--border);padding:24px 0 40px;color:var(--muted);font-size:.875rem}
+.foot{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wrap}
 
-    h1 span { color: #75a5ff; }
-
-    .lead {
-      font-size: 18px;
-      color: var(--muted);
-      max-width: 590px;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .primary {
-      background: var(--blue);
-      color: white;
-    }
-
-    .secondary {
-      border: 1px solid var(--line);
-      color: var(--text);
-    }
-
-    .preview {
-      border: 1px solid #ffffff18;
-      background: linear-gradient(160deg, #17233b, #101626);
-      border-radius: 24px;
-      padding: 22px;
-      box-shadow: 0 24px 80px #0004;
-    }
-
-    .preview-top {
-      display: flex;
-      justify-content: space-between;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .orb {
-      margin: 28px auto 18px;
-      width: 104px;
-      height: 104px;
-      border-radius: 50%;
-      background: radial-gradient(
-        circle at 35% 30%,
-        #c6fbff,
-        #5594ff 38%,
-        #583dd1 70%,
-        #17213b
-      );
-      box-shadow: 0 0 45px #4f8cff55;
-    }
-
-    .preview h3,
-    .preview p {
-      text-align: center;
-    }
-
-    .preview h3 { margin: 0; }
-
-    .preview p {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .mini {
-      display: flex;
-      gap: 9px;
-      margin-top: 20px;
-    }
-
-    .mini span {
-      height: 7px;
-      border-radius: 8px;
-      background: #31425f;
-      flex: 1;
-    }
-
-    .mini span:first-child { background: var(--blue); }
-
-    section { padding: 34px 0 58px; }
-
-    .section-head {
-      max-width: 640px;
-      margin-bottom: 24px;
-    }
-
-    .section-head h2 {
-      font-size: 30px;
-      margin: 0 0 8px;
-    }
-
-    .section-head p { color: var(--muted); }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .card {
-      border: 1px solid var(--line);
-      background: #111827;
-      border-radius: 18px;
-      padding: 22px;
-    }
-
-    .icon { font-size: 23px; }
-
-    .card h3 { margin: 10px 0 6px; }
-
-    .card p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .status {
-      display: inline-block;
-      margin-top: 14px;
-      color: #a8c7ff;
-      background: #1a2d4d;
-      border-radius: 999px;
-      padding: 4px 9px;
-      font-size: 11px;
-    }
-
-    .callout {
-      border: 1px solid #30486d;
-      background: linear-gradient(120deg, #14233b, #101626);
-      border-radius: 22px;
-      padding: 28px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .callout h2 { margin: 0 0 6px; }
-
-    .callout p { color: var(--muted); }
-
-    footer {
-      border-top: 1px solid #ffffff12;
-      padding: 24px 0 36px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .foot {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 760px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 52px 0 38px;
-        gap: 30px;
-      }
-
-      .preview {
-        max-width: 460px;
-        width: 100%;
-        margin: auto;
-      }
-
-      .grid { grid-template-columns: 1fr; }
-
-      .callout {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      h1 { letter-spacing: -1.5px; }
-    }
-  </style>
+/* ---------- Responsive ---------- */
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr}
+  .concept{max-width:30rem}
+}
+@media (max-width:720px){
+  .bento{grid-template-columns:1fr}
+  .card.lead-card{grid-column:auto;grid-row:auto}
+  .founder{grid-template-columns:1fr}
+  .btn{width:100%}
+}
+@media (max-width:380px){
+  nav a{padding:0 8px;font-size:.875rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important}
+  .btn:hover{transform:none}
+}
+</style>
 </head>
-
 <body>
-  <header class="wrap" id="home">
-    <a class="brand" href="#home">
-      <span class="mark">CVM</span>
-      <span>CVM Labs</span>
-    </a>
 
+<!-- Icons (Lucide-style, one consistent set) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8"/><path d="M8 13h5"/></symbol>
+  <symbol id="i-phone-app" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+  <symbol id="i-call" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#home" aria-label="CVM Labs, home"><span class="mark" aria-hidden="true">CVM</span><span>CVM Labs</span></a>
     <nav aria-label="Main navigation">
       <a href="#work">Focus</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <section class="wrap hero">
-      <div>
-        <div class="eyebrow">
-          <span class="dot"></span>
-          Independent technology brand
-        </div>
-
-        <h1>Ideas into<br><span>technology.</span></h1>
-
-        <p class="lead">
-          CVM Labs is an early-stage, founder-led technology brand
-          exploring practical AI tools, mobile apps and digital
-          experiences for everyday problems.
-        </p>
-
-        <div class="actions">
-          <a class="btn primary" href="#work">Explore our focus</a>
-          <a class="btn secondary" href="#about">Meet the founder</a>
-        </div>
+<main id="main">
+  <section class="wrap hero" id="home">
+    <div>
+      <span class="eyebrow">Early-stage · Founder-led · Kenya</span>
+      <h1>Ideas into <em>technology.</em></h1>
+      <p class="lead">CVM Labs is exploring practical AI tools, mobile apps and digital products for everyday problems, starting small and building in the open.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#contact">Get in touch <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#work">See what we're building</a>
       </div>
-
-      <div class="preview">
-        <div class="preview-top">
-          <span>CVM LABS / CONCEPT 001</span>
-          <span>● PREVIEW</span>
-        </div>
-
-        <div class="orb"></div>
-
-        <h3>Your ideas, organised.</h3>
-        <p>A future home for lightweight AI tools.</p>
-
-        <div class="mini">
-          <span></span><span></span><span></span>
-        </div>
-      </div>
-    </section>
-
-    <section class="wrap" id="work">
-      <div class="section-head">
-        <h2>What we're building toward</h2>
-        <p>
-          A focused start, with room to grow into a wider software company.
-        </p>
-      </div>
-
-      <div class="grid">
-        <article class="card">
-          <div class="icon">✦</div>
-          <h3>AI tools</h3>
-          <p>
-            Simple assistants that help people draft, plan, organise
-            and solve everyday tasks.
-          </p>
-          <span class="status">First product area</span>
-        </article>
-
-        <article class="card">
-          <div class="icon">▣</div>
-          <h3>Mobile apps</h3>
-          <p>
-            Lightweight Android-first experiences designed with
-            real phone and data limits in mind.
-          </p>
-          <span class="status">Planned</span>
-        </article>
-
-        <article class="card">
-          <div class="icon">⌘</div>
-          <h3>Digital products</h3>
-          <p>
-            Useful websites and software experiments for people
-            and small businesses.
-          </p>
-          <span class="status">Planned</span>
-        </article>
-      </div>
-    </section>
-
-    <section class="wrap" id="about">
-      <div class="callout">
-        <div>
-          <h2>Built from Kenya. Made for the world.</h2>
-          <p>
-            Founder: Collins Vincent Macharia · Kenya and international markets
-          </p>
-        </div>
-
-        <a class="btn secondary" href="#contact">Get in touch</a>
-      </div>
-    </section>
-
-    <section class="wrap" id="contact">
-      <div class="section-head">
-        <h2>Contact</h2>
-        <p>
-          Add a business email or public contact link here when you're ready.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Let's build useful technology.</h3>
-        <p>
-          Contact details have intentionally been left blank so no
-          personal information is published without your choice.
-        </p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap foot">
-      <span>© 2026 CVM Labs · Draft brand concept</span>
-      <span>Proposed name — not yet legally cleared or registered.</span>
     </div>
-  </footer>
+    <div>
+      <div class="concept" aria-hidden="true">
+        <div class="concept-top"><span>CVM Labs · Concept 001</span><span>Preview</span></div>
+        <div class="prompt"><span>Help me plan my week</span><span class="send"><svg class="i"><use href="#i-arrow"/></svg></span></div>
+        <div class="chips"><span>Draft a message</span><span>Summarise my notes</span><span>Organise my tasks</span></div>
+      </div>
+      <p class="caption">Illustrative concept. Not a live product yet.</p>
+    </div>
+  </section>
+
+  <section class="wrap" id="work">
+    <div class="section-head">
+      <p class="kicker">Focus</p>
+      <h2>What we're building toward</h2>
+      <p>A focused start, with room to grow into a wider software company.</p>
+    </div>
+    <div class="bento">
+      <article class="card lead-card">
+        <div class="tile"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg></div>
+        <h3>AI tools</h3>
+        <p>Simple assistants that help people draft, plan, organise and solve everyday tasks.</p>
+        <ul class="uses" aria-label="Areas we're exploring"><li>Drafting</li><li>Planning</li><li>Organising</li><li>Everyday problem solving</li></ul>
+        <span class="status">First product area</span>
+      </article>
+      <article class="card">
+        <div class="tile"><svg class="i" aria-hidden="true"><use href="#i-phone-app"/></svg></div>
+        <h3>Mobile apps</h3>
+        <p>Lightweight Android-first experiences designed with real phone and data limits in mind.</p>
+        <span class="status">Planned</span>
+      </article>
+      <article class="card">
+        <div class="tile"><svg class="i" aria-hidden="true"><use href="#i-grid"/></svg></div>
+        <h3>Digital products</h3>
+        <p>Useful websites and software experiments for people and small businesses.</p>
+        <span class="status">Planned</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" id="about">
+    <div class="founder">
+      <div class="avatar" aria-hidden="true">CM</div>
+      <div>
+        <h2>Collins Vincent Macharia</h2>
+        <p class="role">Founder · Kenya</p>
+        <!-- EDIT: replace these two lines with your own words -->
+        <p class="bio">I'm building CVM Labs to turn practical ideas into useful technology, starting with AI tools and mobile apps designed for real-world phone and data limits.</p>
+        <p class="bio">Built from Kenya, made for the world.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="contact">
+    <div class="cta">
+      <p class="kicker">Contact</p>
+      <h2>Let's build useful technology.</h2>
+      <p>Have an idea, a question or a project? Reach out the way that suits you best.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="mailto:machariacollins552@gmail.com"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>Email me</a>
+        <a class="btn btn-ghost" href="https://wa.me/254745302561" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-msg"/></svg>Chat on WhatsApp</a>
+        <a class="btn btn-ghost" href="tel:+254140265884"><svg class="i" aria-hidden="true"><use href="#i-call"/></svg>Call +254 140 265 884</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot"><span>© <span id="year">2026</span> CVM Labs</span><span>Early-stage brand · Kenya</span></div>
+</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
   </html>
-  
